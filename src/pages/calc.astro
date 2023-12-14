@@ -1,0 +1,12 @@
+---
+import { Calc } from '../components/calc.tsx';
+import Layout from '../components/layout.astro';
+---
+
+<Layout title="CalcuLink">	
+	<main class="flex-1 flex gap-4 flex-row items-center justify-start">	
+    <section transition:name="calc-content" transition:animate="slide" >
+			<Calc client:load transition:name="calc" transition:persist transition:animate="none" />
+    </section>
+	</main>
+</Layout>

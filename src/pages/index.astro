@@ -1,10 +1,51 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from '../components/layout.astro';
+import { Calc } from '../components/calc.tsx';
+
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
+<Layout title="CalcuLink">	
+	<main class="flex-1 flex gap-4 flex-row items-center justify-center">		
+		<section class="h-64 w-96 hidden lg:flex lg:flex-col">
+			<h1 class="text-4xl font-bold text-white">
+				CalcuLink
+			</h1>
+			<p class="text-white/60 text-balance">
+				Una calculadora que te permite comentar y detallar tus cálculos y compartirlos con otras personas.
+			</p>
+			<div class="mt-6 flex flex-row gap-2">
+			<a 
+				id="start"
+				href="/calc"
+				class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+			>
+				Empezar
+			</a>
+			<button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Instructivo</button>
+
+			</div>
+		</section>
 		
+		<section class="flex flex-row items-center" transition:name="calc-content" transition:animate="slide">
+			<Calc client:load transition:name="calc" transition:persist transition:animate="none" />
+		</section>
 	</main>
 </Layout>
+
+<script>	
+	// navigate to /calc when key is pressed
+	import { KeyboardKeys } from '../lib/keyboard-keys';
+	document.addEventListener('keydown', (e) => {
+
+		const { key } = e as KeyboardEvent;
+
+		if (KeyboardKeys[key] != null) {
+			document.getElementById('start')?.click()		
+		}
+	});
+
+	// navigate to /calc when calc element is clicked
+	document.getElementById('calc')?.addEventListener('click', () => {
+		document.getElementById('start')?.click()		
+	});
+</script>
