@@ -1,25 +1,6 @@
 import { useEffect, useState } from "react"
+import { KEYBOARD_KEYS } from "../constants/keyboard-keys"
 
-const KEYBOARD_KEYS = [
-  '0',
-  '1',
-  '2',
-  '3',
-  '4',
-  '5',
-  '6',
-  '7',
-  '8',
-  '9',
-  '+',
-  '-',
-  '*',
-  '/',
-  '=',
-  'Enter',
-  'Backspace',
-  '.',
-]
 
 export const useKeyPress = () => {
 
@@ -29,9 +10,12 @@ export const useKeyPress = () => {
   useEffect(() => {
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (KEYBOARD_KEYS.includes(e.key)) {
+
+      const keyValue = KEYBOARD_KEYS[e.key]
+
+      if (keyValue != null) {
         e.preventDefault()
-        setKeyboardKeyPress(e.key)
+        setKeyboardKeyPress(keyValue)
       }
     }
 

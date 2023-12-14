@@ -1,4 +1,4 @@
-export const KeyboardKeys: {[key: string]: string} = {
+export const KEYBOARD_KEYS: {[key: string]: string} = {
   '0': '0',
   '1': '1',
   '2': '2',

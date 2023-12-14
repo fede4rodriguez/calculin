@@ -34,12 +34,12 @@ import { Calc } from '../components/calc.tsx';
 
 <script>	
 	// navigate to /calc when key is pressed
-	import { KeyboardKeys } from '../lib/keyboard-keys';
+	import { KEYBOARD_KEYS } from '../constants/keyboard-keys';
 	document.addEventListener('keydown', (e) => {
 
 		const { key } = e as KeyboardEvent;
 
-		if (KeyboardKeys[key] != null) {
+		if (KEYBOARD_KEYS[key] != null) {
 			document.getElementById('start')?.click()		
 		}
 	});

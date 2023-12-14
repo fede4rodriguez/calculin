@@ -4,6 +4,7 @@ import { useKeyPress } from "../hooks/use-key-press"
 export function Calc() {
   const [display, setDisplay] = useState('')
   const { keyboardKeyPress } = useKeyPress()  
+  
 
   useEffect(() => {
     if(keyboardKeyPress == null) return
@@ -86,7 +87,7 @@ export function Calc() {
           className={`${keyboardKeyPress === '3' ? 'bg-cyan-400/30' : 'bg-gray-600/50'} active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold`}
         >3</button>
         <button 
-          className={`${keyboardKeyPress === 'Enter' ? 'bg-cyan-400/30' : 'bg-cyan-300/30'} active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold row-span-2`}
+          className={`${keyboardKeyPress === '=' ? 'bg-cyan-400/30' : 'bg-cyan-300/30'} active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold row-span-2`}
         >=</button>
         <button 
           className={`${keyboardKeyPress === '0' ? 'bg-cyan-400/30' : 'bg-gray-600/50'} active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold col-span-2`}
