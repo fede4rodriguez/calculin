@@ -34,7 +34,7 @@ import { Calc } from '../components/calc.tsx';
 
 <script>	
 	// navigate to /calc when key is pressed
-	import { KEYBOARD_KEYS } from '../constants/keyboard-keys';
+	import { KEYBOARD_KEYS } from '../lib/constants';
 	document.addEventListener('keydown', (e) => {
 
 		const { key } = e as KeyboardEvent;

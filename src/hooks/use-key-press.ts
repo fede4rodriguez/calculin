@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { KEYBOARD_KEYS } from "../constants/keyboard-keys"
+import { KEYBOARD_KEYS } from "../lib/constants"
 
 
 export const useKeyPress = () => {

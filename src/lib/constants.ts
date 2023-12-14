@@ -9,6 +9,7 @@ export const KEYBOARD_KEYS: {[key: string]: string} = {
   '7': '7',
   '8': '8',
   '9': '9',
+  '.': '.',
   '+': '+',
   '-': '-',
   '*': '*',
@@ -16,5 +17,5 @@ export const KEYBOARD_KEYS: {[key: string]: string} = {
   '=': '=',
   'Enter': '=',
   'Backspace': 'Backspace',
-  '.': '.'
+  'Delete': 'Delete',
 }
