@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useKeyPress } from "../hooks/use-key-press"
 import { useCalc } from "../hooks/use-calc"
+import { clsx } from 'clsx'
 
 export function Calc() {
   const { display, result, pressKey }= useCalc()
@@ -31,59 +32,237 @@ export function Calc() {
       </nav>
       <section className="bg-gray-700 p-7 pt-0 grid gap-2 grid-rows-5 grid-cols-4">
         <button 
-          className={`${keyboardKeyPress === 'Delete' ? 'bg-cyan-400/30' : 'bg-gray-600'}  active:bg-cyan-400/30  transition-colors rounded-lg p-3 text-white font-bold`}
+          onClick={() => pressKey('Delete')}
+          className={clsx(
+            'active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold',
+            {
+              'bg-cyan-400/30': keyboardKeyPress === 'Delete',
+              'bg-gray-600': keyboardKeyPress !== 'Delete'
+            }
+          )}
         >AC</button>
+
+        <button
+          onClick={() => pressKey('Backspace')}
+          className={clsx(
+            'active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold',
+            {
+              'bg-cyan-400/30': keyboardKeyPress === 'Backspace',
+              'bg-gray-600': keyboardKeyPress !== 'Backspace'
+            }
+          )}
+        >C</button>
+
         <button 
-          className={`${keyboardKeyPress === 'l' ? 'bg-cyan-400/30' : 'bg-gray-600'}    active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold`}
-        >( )</button>
+          onClick={() => pressKey('/')}
+          className={clsx(
+            'active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold',
+            {
+              'bg-cyan-400/30': keyboardKeyPress === '/',
+              'bg-gray-600': keyboardKeyPress !== '/'
+            }
+          )}
+        >
+          /
+        </button>
+
         <button 
-          className={`${keyboardKeyPress === '/' ? 'bg-cyan-400/30' : 'bg-gray-600'}    active:bg-cyan-400/30 sition-colors rounded-lg p-3 text-white font-bold`}
-        >/</button>
+          onClick={() => pressKey('*')}
+          className={clsx(
+            'active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold',
+            {
+              'bg-cyan-400/30': keyboardKeyPress === '*',
+              'bg-gray-600': keyboardKeyPress !== '*'
+            }
+          )}
+        >
+          x
+        </button>
+
         <button 
-          className={`${keyboardKeyPress === '*' ? 'bg-cyan-400/30' : 'bg-gray-600/50'} active:bg-cyan-400/30 sition-colors rounded-lg p-3 text-white font-bold`}
-        >x</button>
+          onClick={() => pressKey('7')}
+          className={clsx(
+            'active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold',
+            {
+              'bg-cyan-400/30': keyboardKeyPress === '7',
+              'bg-gray-600': keyboardKeyPress !== '7'
+            }
+          )}
+        >
+          7
+        </button>
+
         <button 
-          className={`${keyboardKeyPress === '7' ? 'bg-cyan-400/30' : 'bg-gray-600/50'} active:bg-cyan-400/30 sition-colors rounded-lg p-3 text-white font-bold`}
-        >7</button>
+          onClick={() => pressKey('8')}
+          className={clsx(
+            'active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold',
+            {
+              'bg-cyan-400/30': keyboardKeyPress === '8',
+              'bg-gray-600': keyboardKeyPress !== '8'
+            }
+          )}
+        >
+          8
+        </button>
+
         <button 
-          className={`${keyboardKeyPress === '8' ? 'bg-cyan-400/30' : 'bg-gray-600/50'} active:bg-cyan-400/30 sition-colors rounded-lg p-3 text-white font-bold`}
-        >8</button>
+          onClick={() => pressKey('9')}
+          className={clsx(
+            'active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold',
+            {
+              'bg-cyan-400/30': keyboardKeyPress === '9',
+              'bg-gray-600': keyboardKeyPress !== '9'
+            }
+          )}
+        >
+          9
+        </button>
+
         <button 
-          className={`${keyboardKeyPress === '9' ? 'bg-cyan-400/30' : 'bg-gray-600'}    active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold`}
-        >9</button>
+          onClick={() => pressKey('-')}
+          className={clsx(
+            'active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold',
+            {
+              'bg-cyan-400/30': keyboardKeyPress === '-',
+              'bg-gray-600': keyboardKeyPress !== '-'
+            }
+          )}
+        >
+          -
+        </button>
+
         <button 
-          className={`${keyboardKeyPress === '-' ? 'bg-cyan-400/30' : 'bg-gray-600'}    active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold`}
-        >-</button>
+          onClick={() => pressKey('4')}
+          className={clsx(
+            'active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold',
+            {
+              'bg-cyan-400/30': keyboardKeyPress === '4',
+              'bg-gray-600': keyboardKeyPress !== '4'
+            }
+          )}
+        >
+          4
+        </button>
+
         <button 
-          className={`${keyboardKeyPress === '4' ? 'bg-cyan-400/30' : 'bg-gray-600/50'} active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold`}
-        >4</button>
+          onClick={() => pressKey('5')}
+          className={clsx(
+            'active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold',
+            {
+              'bg-cyan-400/30': keyboardKeyPress === '5',
+              'bg-gray-600': keyboardKeyPress !== '5'
+            }
+          )}
+        >
+          5
+        </button>
+
         <button 
-          className={`${keyboardKeyPress === '5' ? 'bg-cyan-400/30' : 'bg-gray-600/50'} active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold`}
-        >5</button>
+          onClick={() => pressKey('6')}
+          className={clsx(
+            'active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold',
+            {
+              'bg-cyan-400/30': keyboardKeyPress === '6',
+              'bg-gray-600': keyboardKeyPress !== '6'
+            }
+          )}
+        >
+          6
+        </button>
+
         <button 
-          className={`${keyboardKeyPress === '6' ? 'bg-cyan-400/30' : 'bg-gray-600/50'} active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold`}
-        >6</button>
+          onClick={() => pressKey('+')}
+          className={clsx(
+            'active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold',
+            {
+              'bg-cyan-400/30': keyboardKeyPress === '+',
+              'bg-gray-600': keyboardKeyPress !== '+'
+            }
+          )}
+        >
+          +
+        </button>
+        
         <button 
-          className={`${keyboardKeyPress === '+' ? 'bg-cyan-400/30' : 'bg-gray-600'}    active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold`}
-        >+</button>
+          onClick={() => pressKey('1')}
+          className={clsx(
+            'active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold',
+            {
+              'bg-cyan-400/30': keyboardKeyPress === '1',
+              'bg-gray-600': keyboardKeyPress !== '1'
+            }
+          )}
+        >
+          1
+        </button>
+
         <button 
-          className={`${keyboardKeyPress === '1' ? 'bg-cyan-400/30' : 'bg-gray-600/50'} active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold`}
-        >1</button>
+          onClick={() => pressKey('2')}
+          className={clsx(
+            'active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold',
+            {
+              'bg-cyan-400/30': keyboardKeyPress === '2',
+              'bg-gray-600': keyboardKeyPress !== '2'
+            }
+          )}
+        >
+          2
+        </button>
+
         <button 
-          className={`${keyboardKeyPress === '2' ? 'bg-cyan-400/30' : 'bg-gray-600/50'} active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold`}
-        >2</button>
+          onClick={() => pressKey('3')}
+          className={clsx(
+            'active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold',
+            {
+              'bg-cyan-400/30': keyboardKeyPress === '3',
+              'bg-gray-600': keyboardKeyPress !== '3'
+            }
+          )}
+        >
+          3
+        </button>
+
         <button 
-          className={`${keyboardKeyPress === '3' ? 'bg-cyan-400/30' : 'bg-gray-600/50'} active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold`}
-        >3</button>
+          onClick={() => pressKey('=')}
+          className={clsx(
+            'active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold',
+            'row-span-2',
+            {
+              'bg-cyan-400/30': keyboardKeyPress === '=',
+              'bg-gray-600': keyboardKeyPress !== '='
+            }
+          )}
+        >
+          =
+        </button>
+        
         <button 
-          className={`${keyboardKeyPress === '=' ? 'bg-cyan-400/30' : 'bg-cyan-300/30'} active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold row-span-2`}
-        >=</button>
+          onClick={() => pressKey('0')}
+          className={clsx(
+            'active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold',
+            'col-span-2',
+            {
+              'bg-cyan-400/30': keyboardKeyPress === '0',
+              'bg-gray-600': keyboardKeyPress !== '0'
+            }
+          )}
+        >
+          0
+        </button>
+
         <button 
-          className={`${keyboardKeyPress === '0' ? 'bg-cyan-400/30' : 'bg-gray-600/50'} active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold col-span-2`}
-        >0</button>
-        <button 
-          className={`${keyboardKeyPress === '.' ? 'bg-cyan-400/30' : 'bg-gray-600'}    active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold`}
-        >.</button>
+          onClick={() => pressKey('.')}
+          className={clsx(
+            'active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold',
+            {
+              'bg-cyan-400/30': keyboardKeyPress === '.',
+              'bg-gray-600': keyboardKeyPress !== '.'
+            }
+          )}
+        >
+          .
+        </button>
+
       </section>
     </article>
   )
