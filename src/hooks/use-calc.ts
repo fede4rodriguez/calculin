@@ -55,6 +55,25 @@ export const useCalc = () => {
       return
     } 
 
+
+    if(display === '') {
+      if(
+        keyValue === COMMANDS['equal'] ||         
+        keyValue === COMMANDS['backspace'] ||
+        keyValue === OPERATORS['+'] ||
+        keyValue === OPERATORS['-'] ||
+        keyValue === OPERATORS['*'] ||
+        keyValue === OPERATORS['/']
+      ) {
+        return
+      }
+
+      if(keyValue === '.') {
+        setDisplay('0.')
+        return
+      }
+    }
+
     // backspace
     if(keyValue === COMMANDS['backspace']) {
       setDisplay(display.slice(0, -1))
@@ -63,32 +82,27 @@ export const useCalc = () => {
 
     // equal
     if(keyValue === COMMANDS['equal']) {
-      setResult(eval(display))
+      try {
+        const result = eval(display)
+        setResult(result)
+      } catch () {
+      }
       return
     }
 
-    // operators
-    if(
+    // operators, point
+    if(     
       keyValue === OPERATORS['+'] ||
       keyValue === OPERATORS['-'] ||
       keyValue === OPERATORS['*'] ||
-      keyValue === OPERATORS['/']
-    ) {
-      setDisplay(display + keyValue)
-      return
-    }
-
-    // point
-    if(keyValue === '.') {
-      const lastChar = display.slice(-1)
+      keyValue === OPERATORS['/'] ||
+      keyValue === '.'
+    ) {  
       
-      if(lastChar === '') {
-        setDisplay('0.')
-        return
-      }
-
-      const isNumber = !isNaN(parseInt(lastChar))
-      if(!isNumber) return
+      const lastChar = display.slice(-1)
+      const lastCharIsNumber = !isNaN(parseInt(lastChar))
+      if(lastCharIsNumber) setDisplay(display + keyValue)
+      return
     }
 
     // numbers
