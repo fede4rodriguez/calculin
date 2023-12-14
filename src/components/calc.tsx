@@ -1,26 +1,15 @@
 import { useEffect, useState } from "react"
 import { useKeyPress } from "../hooks/use-key-press"
+import { useCalc } from "../hooks/use-calc"
 
 export function Calc() {
-  const [display, setDisplay] = useState('')
+  const { display, result, pressKey }= useCalc()
   const { keyboardKeyPress } = useKeyPress()  
   
 
   useEffect(() => {
     if(keyboardKeyPress == null) return
-    if(keyboardKeyPress === 'Backspace') {
-      setDisplay((prev) => prev.slice(0, -1))
-      return
-    }
-    if(keyboardKeyPress === 'Enter') {
-      setDisplay(eval(display))
-    return
-  }
-    if(keyboardKeyPress === 'Delete') {
-      setDisplay('')
-    return
-  }
-    setDisplay((prev) => prev + keyboardKeyPress)
+    pressKey(keyboardKeyPress)
   }, [keyboardKeyPress])
 
   return (
@@ -30,8 +19,8 @@ export function Calc() {
     >
       <header className="bg-gray-800 p-7 flex">
         <div className="w-72 rounded-lg bg-cyan-300/50 flex-1 flex flex-col justify-between py-1 px-2 text-end text-black/80">
-          <span className="text-sm">10 + 5</span>
-          <h4 className=" text-5xl">{ display !== '' ? display : '0'}</h4>
+          <span className="text-sm h-4">{display ?? ' '}</span>
+          <h4 className=" text-5xl">{ result !== '' ? result : '0'}</h4>
           <span className="text-xs">historial</span>
         </div>
       </header>
