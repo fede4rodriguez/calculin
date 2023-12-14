@@ -17,6 +17,7 @@ export const useCalc = () => {
     }
       if(key === 'Delete') {
         setDisplay('')
+        setResult('')
       return
     }
     if(result !== '') {
