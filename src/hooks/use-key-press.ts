@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import { KEYBOARD_KEYS } from "../lib/constants"
+import { type KeyboardValues } from "../lib/constants"
 
 
 export const useKeyPress = () => {
 
-  const [keyboardKeyPress, setKeyboardKeyPress] = useState<string | null>(null)
+  const [keyboardKeyPress, setKeyboardKeyPress] = useState<KeyboardValues | null>(null)
 
   // keyboard keys press
   useEffect(() => {

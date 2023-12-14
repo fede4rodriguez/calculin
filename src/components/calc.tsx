@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useKeyPress } from "../hooks/use-key-press"
 import { useCalc } from "../hooks/use-calc"
 import { clsx } from 'clsx'
+import { COMMANDS, OPERATORS } from "../lib/constants"
 
 export function Calc() {
   const { display, result, pressKey }= useCalc()
@@ -32,29 +33,29 @@ export function Calc() {
       </nav>
       <section className="bg-gray-700 p-7 pt-0 grid gap-2 grid-rows-5 grid-cols-4">
         <button 
-          onClick={() => pressKey('Delete')}
+          onClick={() => pressKey(COMMANDS.delete)}
           className={clsx(
             'active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold',
             {
-              'bg-cyan-400/30': keyboardKeyPress === 'Delete',
-              'bg-gray-600': keyboardKeyPress !== 'Delete'
+              'bg-cyan-400/30': keyboardKeyPress === 'delete',
+              'bg-gray-600': keyboardKeyPress !== 'delete'
             }
           )}
         >AC</button>
 
         <button
-          onClick={() => pressKey('Backspace')}
+          onClick={() => pressKey(COMMANDS.backspace)}
           className={clsx(
             'active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold',
             {
-              'bg-cyan-400/30': keyboardKeyPress === 'Backspace',
-              'bg-gray-600': keyboardKeyPress !== 'Backspace'
+              'bg-cyan-400/30': keyboardKeyPress === 'backspace',
+              'bg-gray-600': keyboardKeyPress !== 'backspace'
             }
           )}
         >C</button>
 
         <button 
-          onClick={() => pressKey('/')}
+          onClick={() => pressKey(OPERATORS["/"])}
           className={clsx(
             'active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold',
             {
@@ -67,7 +68,7 @@ export function Calc() {
         </button>
 
         <button 
-          onClick={() => pressKey('*')}
+          onClick={() => pressKey(OPERATORS["*"])}
           className={clsx(
             'active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold',
             {
@@ -119,7 +120,7 @@ export function Calc() {
         </button>
 
         <button 
-          onClick={() => pressKey('-')}
+          onClick={() => pressKey(OPERATORS["-"])}
           className={clsx(
             'active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold',
             {
@@ -171,7 +172,7 @@ export function Calc() {
         </button>
 
         <button 
-          onClick={() => pressKey('+')}
+          onClick={() => pressKey(OPERATORS["+"])}
           className={clsx(
             'active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold',
             {
@@ -223,13 +224,13 @@ export function Calc() {
         </button>
 
         <button 
-          onClick={() => pressKey('=')}
+          onClick={() => pressKey(COMMANDS["equal"])}
           className={clsx(
             'active:bg-cyan-400/30 transition-colors rounded-lg p-3 text-white font-bold',
             'row-span-2',
             {
-              'bg-cyan-400/30': keyboardKeyPress === '=',
-              'bg-gray-600': keyboardKeyPress !== '='
+              'bg-cyan-400/30': keyboardKeyPress === 'equal',
+              'bg-gray-600': keyboardKeyPress !== 'equal'
             }
           )}
         >
