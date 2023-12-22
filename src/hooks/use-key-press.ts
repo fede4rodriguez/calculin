@@ -20,7 +20,7 @@ export const useKeyPress = () => {
       }
     }
 
-    const handleKeyUp = (e: KeyboardEvent) => {
+    const handleKeyUp = () => {
       if (keyboardKeyPress != null) {
         setKeyboardKeyPress(null)
       }

@@ -1,6 +1,10 @@
 import { useCallback, useState } from "react"
 import { type KeyboardValues, COMMANDS, OPERATORS } from "../lib/constants"
 
+interface Result {
+  value: string | null
+  error: string
+}
 
 export const useCalc = () => {
 
@@ -85,7 +89,8 @@ export const useCalc = () => {
       try {
         const result = eval(display)
         setResult(result)
-      } catch () {
+      } catch (error) {
+        console.error(error)
       }
       return
     }

@@ -1,6 +1,6 @@
 ---
 import Layout from '../components/layout.astro';
-import { Calc } from '../components/calc.tsx';
+import { CalcComponent } from '../components/calc.tsx';
 
 ---
 
@@ -27,7 +27,7 @@ import { Calc } from '../components/calc.tsx';
 		</section>
 		
 		<section class="flex flex-row items-center" transition:name="calc-content" transition:animate="slide">
-			<Calc client:load transition:name="calc" transition:persist transition:animate="none" />
+			<CalcComponent client:load transition:name="calc" transition:persist transition:animate="none" />
 		</section>
 	</main>
 </Layout>

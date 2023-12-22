@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useKeyPress } from "../hooks/use-key-press"
 import { useCalc } from "../hooks/use-calc"
 import { clsx } from 'clsx'
 import { COMMANDS, OPERATORS } from "../lib/constants"
 
-export function Calc() {
+export function CalcComponent() {
   const { display, result, pressKey }= useCalc()
   const { keyboardKeyPress } = useKeyPress()  
   
