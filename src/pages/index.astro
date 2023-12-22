@@ -4,15 +4,23 @@ import { CalcComponent } from '../components/calc.tsx';
 import Header from '../components/header.astro';
 ---
 
-<Layout title="CalcuLink">	
+<Layout title="Calculin">	
 	<Header hiddenTitle={true} />
 	<main class="flex-1 flex gap-4 flex-row items-center justify-center">		
 		<section class="h-64 w-96 hidden lg:flex lg:flex-col">
 			<h1 class="text-4xl font-bold text-white" transition:name="title">
-				CalcuLink
+				Calculin
 			</h1>
 			<p class="text-white/60 text-balance">
-				Una calculadora que te permite comentar y detallar tus cálculos y compartirlos con otras personas.
+				Proyecto creado para la 
+				<a
+					href="https://effulgent-valkyrie-b45ad4.netlify.app/"
+					class="font-bold"
+					target="_blank"
+					title="Competencia de Programación de Calculadoras"
+				>
+					Competencia de Programación de Calculadoras
+				</a>
 			</p>
 			<div class="mt-6 flex flex-row gap-2">
 				<a 
