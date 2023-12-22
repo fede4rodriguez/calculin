@@ -19,19 +19,18 @@ export function CalcComponent() {
       id='calc'
       className="rounded-3xl overflow-hidden shadow-black shadow-2xl"
     >
-      <header className="bg-gray-800 p-7 flex">
-        <div className="w-72 rounded-lg bg-cyan-300/50 flex-1 flex flex-col justify-between py-1 px-2 text-end text-black/80">
-          <span className="text-sm h-4">{display ?? ' '}</span>
-          <h4 className=" text-5xl">{ result !== '' ? result : '0'}</h4>
-          <span className="text-xs">historial</span>
+      <header className="bg-gray-800 p-7 flex" style={{fontFamily: 'LCD2'}}>
+        <div className="w-72 rounded-lg bg-cyan-300/50 flex-1 flex flex-col justify-between gap-1 py-3 px-3 text-end text-black/80">
+          <span className="text-base h-5">{display ?? ' '}</span>
+          <h4 className="text-5xl overflow-hidden overflow-ellipsis">{ result !== '' ? result : '0'}</h4>
         </div>
       </header>
-      <nav className="bg-gray-700 px-7 py-3 grid gap-3 grid-cols-5 items-center">
+      {/*<nav className="bg-gray-700 px-7 py-3 grid gap-3 grid-cols-5 items-center">
         <button className='col-span-2 bg-gray-600/60 rounded-lg px-3 py-1 text-white/60 text-xs font-medium'>detalle</button>
         <div className=" rounded-full aspect-square bg-cyan-300/30 grid content-center justify-center text-white/80 font-bold">@</div>
         <button className='col-span-2 bg-gray-600/60 rounded-lg px-3 py-1 text-white/60 text-xs font-medium'>historial</button>
-      </nav>
-      <section className="bg-gray-700 p-7 pt-0 grid gap-2 grid-rows-5 grid-cols-4">
+      </nav>*/}
+      <section className="bg-gray-700 p-7 grid gap-2 grid-rows-5 grid-cols-4">
         <button 
           onClick={() => pressKey(COMMANDS.delete)}
           className={clsx(
