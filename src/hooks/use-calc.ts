@@ -1,5 +1,7 @@
 import { useCallback, useState } from "react"
 import { type KeyboardValues, COMMANDS, OPERATORS } from "../lib/constants"
+import { type ICalc, useHistory } from "./use-history"
+import { set } from "astro/zod"
 
 interface Result {
   value: string | null
@@ -10,6 +12,8 @@ export const useCalc = () => {
 
   const [display, setDisplay] = useState<string>('')
   const [result, setResult] = useState<string>('')
+  const [currentCalc, setCurrentCalc] = useState<ICalc | null>(null)
+  const { addCalc, clearHistory } = useHistory()
 
   const pressKey = useCallback((keyValue: KeyboardValues) => {
 
@@ -17,6 +21,8 @@ export const useCalc = () => {
       setDisplay('')
       setResult('')
       // NEW CALC
+      clearHistory()
+      setCurrentCalc(null)
       return
     }
 
@@ -36,9 +42,12 @@ export const useCalc = () => {
         keyValue === OPERATORS['*'] ||
         keyValue === OPERATORS['/']
       ) {
-        setDisplay(result + keyValue)
-        setResult('')
         // NEW STEP
+        setCurrentCalc({
+          initialValue: parseFloat(result)
+        })
+        setDisplay(result + keyValue)
+        setResult('')        
         return
       }
 
@@ -88,6 +97,21 @@ export const useCalc = () => {
     if(keyValue === COMMANDS['equal']) {
       try {
         const result = eval(display)
+        const items: ICalc['items'] = display.split(/(\+|-|\*|\/)/).map((item) => {
+          const operator = item.trim()
+          if(operator === '') return
+          if(isNaN(parseFloat(operator))) return
+          return {
+            value: parseFloat(operator),
+            operator: operator
+          }
+        })
+        setCurrentCalc((prev) => {
+          const newItem = { ...prev, items, result }
+          addCalc(newItem)
+          return newItem
+        })
+        
         setResult(result)
       } catch (error) {
         console.error(error)
